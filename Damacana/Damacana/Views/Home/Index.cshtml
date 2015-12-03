@@ -1,0 +1,38 @@
+﻿@using Damacana.Models
+@model List<Damacana.Models.Product>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@foreach (Product p in Model)
+{
+    <hr/>
+    <tr>
+        <td>
+            <a href="@Url.Action("ProductDetails", new { id = p.Id })">
+                <img style="float:left;margin-right:10px" src="@p.Foto" height="60" width="50">
+            </a>
+        </td>
+        <td>
+            <h4><b>@p.Name (@p.Id)</b></h4>
+            <p>@p.Price $</p>
+        </td>
+    </tr>
+        <div style="float:right">
+            @Html.ActionLink("Edit", "EditProduct", new { id = p.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { })
+        </div>
+        <a class="btn btn-success" href="@Url.Action("AddToCase","Case", new { id = p.Id})">Add 1 to Cart</a>
+        <br />
+}
+        <hr />
+        <h2>You can add more weapons !</h2>
+
+        @using (Html.BeginForm("AddProduct", "Home", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-primary">Add New Weapon</button>
+            <br />
+            <br />
+        }
+
+

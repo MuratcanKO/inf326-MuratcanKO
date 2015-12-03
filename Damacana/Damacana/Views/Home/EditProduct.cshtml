@@ -1,0 +1,26 @@
+﻿@model  Damacana.Models.Product
+
+<h2>Edit Product</h2>
+
+<form action="@Url.Action("SaveModifiedProduct")" method="POST">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>@Html.TextBoxFor(x => x.Name, new { @Value = Model.Name })</td>
+
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td>@Html.TextBoxFor(x => x.Price, new { @Value = Model.Price })</td>
+        </tr>
+        <tr>
+            <td>Foto URL:</td>
+            <td>@Html.TextBoxFor(x => x.Foto, new { @Value = Model.Foto })</td>
+
+        </tr>
+    </table>
+    <p>
+        <button type="submit" value="Save">Save</button>
+    </p>
+
+</form>
